@@ -10,13 +10,10 @@ class HomeStudentDisplay extends Component {
   }
   render() {
     return (
-        <div className="container">
-            <table className="table table-sriped">
-                
-          
+      <div className="container">
+        <table className="table table-sriped">
           <tbody>
             {this.props.students.map((student, index) => {
-              console.log(this);
               return (
                 <StudentDisplay
                   student={student}

@@ -1,18 +1,17 @@
 let students = [
-    {
-      id: 1,
-      name: "Jerry Broomstick",
-      course: "iOS",
-      location: "Lehi",
-    },
-    {
-      id: 2,
-      name: "Hamadi the Great",
-      course: "iOS",
-      location: "Lehi",
-    }
-]
-
+  {
+    id: 1,
+    name: "Jerry Broomstick",
+    course: "iOS",
+    location: "Lehi"
+  },
+  {
+    id: 2,
+    name: "Hamadi the Great",
+    course: "iOS",
+    location: "Lehi"
+  }
+];
 
 module.exports = {
   getStudents: (req, res) => {
@@ -33,16 +32,15 @@ module.exports = {
   },
 
   updateStudent: (req, res) => {
-    let updateID = req.params.id;
-    let updateIndex = students.findIndex(students => {
-      students.id == updateID;
-    });
-    let studentToUpdate = students[updateIndex];
+    let updateID = +req.params.id;
+    let updateIndex = students.findIndex(student => student.id === updateID);
+    console.log(updateIndex);
+    var studentToUpdate = students[updateIndex];
     students[updateIndex] = {
-      id: studentToUpdate,
-      name: studentToUpdate.name,
-      course: studentToUpdate.course,
-      location: studentToUpdate.location
+      id: updateID,
+      name: req.body.name,
+      course: req.body.course,
+      location: req.body.location
     };
     res.status(200).send(students);
   },

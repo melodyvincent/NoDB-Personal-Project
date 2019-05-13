@@ -32,15 +32,14 @@ class StudentDisplay extends Component {
   saveStudent = () => {
     const { name, course, location } = this.state;
     const { student, editStudent } = this.props;
+
     editStudent(student.id, name, course, location);
     this.toggleEdit();
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
-        
         {this.state.edit ? (
           <tr>
             <td>
@@ -67,8 +66,10 @@ class StudentDisplay extends Component {
               </button>
               {this.state.delete ? (
                 <div>
-                  <confirm>Are you sure you want to delete this student?</confirm>
-            
+                  <confirm>
+                    Are you sure you want to delete this student?
+                  </confirm>
+
                   <button
                     onClick={() =>
                       this.props.removeStudent(this.props.student.id)

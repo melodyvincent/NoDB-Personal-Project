@@ -50,13 +50,13 @@ class App extends Component {
       course: course,
       location: location
     };
+    console.log(id);
     axios.put(`/api/students/${id}`, body).then(res => {
       this.setState({ students: res.data });
     });
   };
 
   render() {
-    console.log(this.state);
     let displayStudents = this.state.students.map(student => {
       return (
         <div classname="content-container" key={student.id}>
