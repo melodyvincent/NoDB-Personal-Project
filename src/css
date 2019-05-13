@@ -1,0 +1,98 @@
+<div>
+  import React, {'{'} Component {'}'} from "react";
+  import "./App.css";
+  import axios from "axios";
+  // import AddStudent from "./Components/AddStudent";
+  import StudentProfile from "./Components/StudentProfile";
+  import Home from './Components/Home';
+  // import './App.css';
+  class App extends Component {'{'}
+  constructor(props) {'{'}
+  super(props);
+  this.state = {'{'}
+  currentPage: "Add Student",
+  students: [],
+  name:"",
+  course: "",
+  location: "",
+  {'}'};
+  {'}'}
+  async componentDidMount() {'{'}
+  let res = await axios.get("/api/students");
+  this.setState({'{'} students: res.data {'}'});
+  {'}'}
+  handleUpdateChange(e) {'{'}
+  this.setState({'{'} name: e.target.value {'}'});
+  {'}'}
+  async handleSubmit() {'{'}
+  let body = {'{'}
+  name:this.state.name,
+  course:this.state.course,
+  location:this.state.location,
+  {'}'}
+  let res = await axios.post('/api/students', body);
+  await this.setState({'{'} students: res.data {'}'})
+  {'}'}
+  render() {'{'}
+  let displayStudents = this.state.students.map(student =&gt; {'{'}
+  return (
+  <div key="{student.id}">
+    <p>Name: {'{'}student.name{'}'}</p>
+    <p>Course: {'{'}student.course{'}'}</p>
+    <p>Location: {'{'}student.location{'}'}</p>
+  </div>
+  );
+  {'}'});
+  let displayHomePage = (
+  <div classname="home-content">
+    <div>
+      <h3>Students</h3>
+      {'{'}displayStudents{'}'}
+    </div>
+  </div>
+  );
+  let displayAddStudent = (
+  <div classname="student-content">
+    <h2>Add Student</h2>
+    <input onchange="{(e)=" /> this.setState({'{'}name: e.target.value{'}'}){'}'} placeholder="Name"&gt;
+    <input onchange="{(e)=" /> this.setState({'{'}course: e.target.value{'}'}){'}'} placeholder="Course"&gt;
+    <input onchange="{(e)=" /> this.setState({'{'}location: e.target.value{'}'}){'}'} placeholder="Location"&gt;
+    <button onclick="{()" => this.handleSubmit(){'}'}&gt;Submit</button>
+  </div>
+  );
+  let displayProfile = (
+  <div classname="profile-content">
+    <h2>Student Profile</h2>
+    <studentprofile handleupdatechange="{this.handleUpdateChange}">
+    </studentprofile></div>
+  );
+  return (
+  <div classname="container">
+    <div classname="header clearfix">
+      <nav>
+        {'{'}/* <ul classname="nav pull-right"> */{'}'}
+          <button onclick="{()" => this.setState({'{'} currentPage: "Home" {'}'}){'}'}&gt;
+            Home
+          </button>
+          <button onclick="{()" => this.setState({'{'} currentPage: "Add Student" {'}'}){'}'}
+            &gt;
+            Add Student
+          </button>
+          <button onclick="{()" => this.setState({'{'} currentPage: "Profile" {'}'}){'}'}
+            &gt;
+            Profile
+          </button>
+          {'{'}/* </ul> */{'}'}
+      </nav>
+    </div>
+    {'{'}this.state.currentPage === "Home" &amp;&amp; displayHomePage{'}'}
+    {'{'}this.state.currentPage === "Add Student" &amp;&amp; displayAddStudent{'}'}
+    {'{'}this.state.currentPage === "Profile" &amp;&amp; displayProfile{'}'}
+    <div id="app" classname="jumbotron">
+      <footer className="footer">
+      </footer></div>
+    );
+    {'}'}
+    {'}'}
+    export default App;
+  </div></div>
