@@ -63,7 +63,7 @@ class App extends Component {
           <div className="student-box">
             <p>Name: {student.name}</p>
             <p>Course: {student.course}</p>
-            <p>Location: {student.name}</p>
+            <p>Location: {student.location}</p>
           </div>
           {/* <div>Name: {student.name}</div>
             <div>Course: {student.course}</div>
