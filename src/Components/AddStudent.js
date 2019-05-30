@@ -107,29 +107,3 @@ class AddStudent extends Component {
 
 export default AddStudent;
 
-// render() {
-//     return (
-
-//         <div "col-md-5"/>
-//             <div className="form-area">
-//             <form role="form">
-//                 <br styles="clear:both" />
-//                     <div className="form-group">
-//                         <input type="text" onChange={this.handleNameChange} className="form-control" id="name" name="name" placeholder="Name" required />
-//                     </div>
-
-//                     <div className="form-group">
-//                         <textarea className="form-control" onChange={this.handleCourseChange} type="textarea" id="course" placeholder="Course" maxlength="50" rows="1"></textarea>
-//                     </div>
-
-//                     <div className="form-group">
-//                         <textarea className="form-control" onChange={this.handleLocationChange} type="textarea" id="location" placeholder="location" maxlength="30" rows="1"></textarea>
-//                     </div>
-
-//                 <button type="button" id="submit" name="submit" className="btn btn-primary pull-right">AddStudent</button>
-//             </form>
-//         </div>
-//     </div>
-
-//     )
-// }
